@@ -32,8 +32,20 @@ public class ControllerPlayer : MonoBehaviour
         WorldLeft = (Quaternion.AngleAxis(45, Vector3.up) * Vector3.right).normalized;
         WorldRight = (Quaternion.AngleAxis(45, Vector3.up) * -Vector3.right).normalized;	  
     }
+	
+	// Non physics based updates.
+	// Implement skill input in update as it is not physics based.
+	void Update()
+	{
+		// Implement use weapon skill.
+        if (Input.GetMouseButtonDown(0))
+        {
+			Instantiate(Resources.Load("PrefabTest"));
+		}			
+	}
 
-    // Update is called once per frame
+	// Physics based updates.
+    // Implement movement in fixedupdate as it is physics based.
     void FixedUpdate()
     {	
 		// Directional movement
@@ -52,6 +64,7 @@ public class ControllerPlayer : MonoBehaviour
             _Rigidbody.AddForce(MoveDirection.normalized * Speed);
         } 
 		
+		// Hovering
         if (TimerHover < DurationHover)
         {
             if (Input.GetMouseButton(1))
@@ -60,7 +73,8 @@ public class ControllerPlayer : MonoBehaviour
                 _Rigidbody.AddForce(transform.up * SpeedHover);
             }
         }		
-
+        
+		// Reset hovering cooldown when the player is on the ground.
         if(IsGrounded())
         {
             TimerHover = 0;
