@@ -4,14 +4,7 @@ using UnityEngine;
 
 public class MetaObjectPool : MonoBehaviour
 {
-	[System.Serializable]
-	public class ObjectPoolEntry 
-	{
-		public string Name;
-		public GameObject Objects;
-	}
-	
-	public List<ObjectPoolEntry> ObjectPool;
+	public Dictionary<string, List<GameObject>> ObjectPool = new Dictionary<string, List<GameObject>>();
 	
     // Start is called before the first frame update
     void Start()
@@ -24,4 +17,19 @@ public class MetaObjectPool : MonoBehaviour
     {
         
     }
+	
+	public void Instantiate(string Name)
+	{
+		foreach(var i in ObjectPool)
+		{
+			if(i.Key == Name)
+			{
+				return;
+			}
+		}
+		ObjectPool.Add(Name, new List<GameObject>());
+		
+		GameObject NewObject = (GameObject)Instantiate(Resources.Load(Name));
+		ObjectPool[Name].Add(NewObject);
+	}
 }

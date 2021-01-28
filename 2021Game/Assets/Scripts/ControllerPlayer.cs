@@ -13,6 +13,7 @@ public class ControllerPlayer : MonoBehaviour
 	float DistToGround;
 	
 	Rigidbody _Rigidbody;
+	MetaObjectPool _MetaObjectPool;
 	
     Vector3 WorldUp;
     Vector3 WorldDown;
@@ -23,6 +24,8 @@ public class ControllerPlayer : MonoBehaviour
     void Start()
     {
 		_Rigidbody = GetComponent<Rigidbody>();
+		_MetaObjectPool = GameObject.Find("GameMeta").GetComponent<MetaObjectPool>();
+		
 	    DistToGround = GetComponent<Collider>().bounds.extents.y;
 		
 		// Adapt movement to isometric world.
@@ -40,7 +43,7 @@ public class ControllerPlayer : MonoBehaviour
 		// Implement use weapon skill.
         if (Input.GetMouseButtonDown(0))
         {
-			Instantiate(Resources.Load("PrefabTest"));
+			_MetaObjectPool.Instantiate("PrefabTest");
 		}			
 	}
 
