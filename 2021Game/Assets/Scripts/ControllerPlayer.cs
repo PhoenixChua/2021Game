@@ -13,7 +13,7 @@ public class ControllerPlayer : MonoBehaviour
 	float DistToGround;
 	
 	Rigidbody _Rigidbody;
-	MetaObjectPool _MetaObjectPool;
+	MetaGameSkillManager _MetaGameSkillManager;
 	
     Vector3 WorldUp;
     Vector3 WorldDown;
@@ -24,7 +24,8 @@ public class ControllerPlayer : MonoBehaviour
     void Start()
     {
 		_Rigidbody = GetComponent<Rigidbody>();
-		_MetaObjectPool = GameObject.Find("MetaGame").GetComponent<MetaObjectPool>();
+		// Like to the meta game object to allow the use of skills.
+		_MetaGameSkillManager = GameObject.Find("MetaGame").GetComponent<MetaGameSkillManager>();
 		
 	    DistToGround = GetComponent<Collider>().bounds.extents.y;
 		
@@ -43,7 +44,7 @@ public class ControllerPlayer : MonoBehaviour
 		// Implement use weapon skill.
         if (Input.GetMouseButtonDown(0))
         {
-			_MetaObjectPool.Instantiate("PrefabTest", transform.position);
+			_MetaGameSkillManager.ResolveSkill("PrefabTest", this.gameObject);
 		}			
 	}
 

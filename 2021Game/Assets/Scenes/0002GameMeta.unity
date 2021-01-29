@@ -178,6 +178,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 194f57ecf1d43bb44a42b4d505e8991d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Skills:
+  - Name: 
+    GlobalCooldown: 0
+    SkillEffects: []
+  - Name: 
+    GlobalCooldown: 0
+    SkillEffects: []
 --- !u!114 &221441337
 MonoBehaviour:
   m_ObjectHideFlags: 0

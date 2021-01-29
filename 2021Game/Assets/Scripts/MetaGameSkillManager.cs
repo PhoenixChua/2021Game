@@ -28,12 +28,16 @@ public class MetaGameSkillManager : MonoBehaviour
         }
 
         public List<SkillEffect> SkillEffects = new List<SkillEffect>();
-    }	
+    }
+	
+    public List<SkillData> Skills = new List<SkillData>();	
+	
+	MetaObjectPool _MetaObjectPool;
 	
     // Start is called before the first frame update
     void Start()
     {
-        
+		_MetaObjectPool = GetComponent<MetaObjectPool>();
     }
 
     // Update is called once per frame
@@ -41,4 +45,9 @@ public class MetaGameSkillManager : MonoBehaviour
     {
         
     }
+	
+	public void ResolveSkill(string SkillName, GameObject User)
+	{
+		_MetaObjectPool.Instantiate(SkillName, User.transform.position);
+	}
 }
