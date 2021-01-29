@@ -63,9 +63,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\ControllerPlayer.cs" />
+    <Compile Include="Assets\Scripts\MetaGame.cs" />
+    <Compile Include="Assets\Scripts\MetaGameSkillManager.cs" />
     <Compile Include="Assets\Scripts\MetaObjectPool.cs" />
     <Compile Include="Assets\Scripts\MetaSaveLoad.cs" />
     <Compile Include="Assets\Scripts\ObjectTimedLife.cs" />
+    <Compile Include="Assets\Scripts\Unit.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.17f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

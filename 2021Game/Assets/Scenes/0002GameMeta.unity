@@ -131,8 +131,10 @@ GameObject:
   m_Component:
   - component: {fileID: 221441334}
   - component: {fileID: 221441335}
+  - component: {fileID: 221441337}
+  - component: {fileID: 221441336}
   m_Layer: 0
-  m_Name: GameMeta
+  m_Name: MetaGame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -162,6 +164,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3b38ed78f099152478392c1dabb7844f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &221441336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 221441333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 194f57ecf1d43bb44a42b4d505e8991d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &221441337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 221441333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab0ed94441ee41643a7bbe5e04188cc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &2995244792708447726

@@ -24,7 +24,7 @@ public class ControllerPlayer : MonoBehaviour
     void Start()
     {
 		_Rigidbody = GetComponent<Rigidbody>();
-		_MetaObjectPool = GameObject.Find("GameMeta").GetComponent<MetaObjectPool>();
+		_MetaObjectPool = GameObject.Find("MetaGame").GetComponent<MetaObjectPool>();
 		
 	    DistToGround = GetComponent<Collider>().bounds.extents.y;
 		
