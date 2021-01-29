@@ -43,7 +43,7 @@ public class ControllerPlayer : MonoBehaviour
 		// Implement use weapon skill.
         if (Input.GetMouseButtonDown(0))
         {
-			_MetaObjectPool.Instantiate("PrefabTest");
+			_MetaObjectPool.Instantiate("PrefabTest", transform.position);
 		}			
 	}
 
