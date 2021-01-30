@@ -4,16 +4,18 @@ using UnityEngine;
 
 public class MetaGameSkillManager : MonoBehaviour
 {
+	// A skill that can be modified in the editor.
     [System.Serializable]
     public class SkillData
     {
         public string Name = "Skill";
+		// Using this skill prevents the user from acting for this amount of time.
         public float GlobalCooldown = 0.0f;
 
         [System.Serializable]
         public class SkillEffect
         {
-            public GameObject SpawnObject;
+            public string SpawnObjectName;
             public enum EffectType
             {
                 SpawnAtUser,
@@ -46,8 +48,19 @@ public class MetaGameSkillManager : MonoBehaviour
         
     }
 	
-	public void ResolveSkill(string SkillName, GameObject User)
+	public void ResolveSkill(string SkillName, GameObject User, Unit UserUnitComponent)
 	{
-		_MetaObjectPool.Instantiate(SkillName, User.transform.position);
+		for(int i = 0; i < Skills.Count; ++i)
+		{
+			if(Skills[i].Name == SkillName && UserUnitComponent.GlobalCooldown < 0.0f)
+			{
+				UserUnitComponent.GlobalCooldown = Skills[i].GlobalCooldown;
+				for(int j = 0; j < Skills[i].SkillEffects.Count; ++j)
+				{
+					_MetaObjectPool.Instantiate(Skills[i].SkillEffects[j].SpawnObjectName, User.transform.position);
+				}
+				break;
+			}
+		}
 	}
 }

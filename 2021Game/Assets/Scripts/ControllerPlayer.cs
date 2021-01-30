@@ -14,6 +14,7 @@ public class ControllerPlayer : MonoBehaviour
 	
 	Rigidbody _Rigidbody;
 	MetaGameSkillManager _MetaGameSkillManager;
+	Unit _Unit;
 	
     Vector3 WorldUp;
     Vector3 WorldDown;
@@ -26,6 +27,7 @@ public class ControllerPlayer : MonoBehaviour
 		_Rigidbody = GetComponent<Rigidbody>();
 		// Like to the meta game object to allow the use of skills.
 		_MetaGameSkillManager = GameObject.Find("MetaGame").GetComponent<MetaGameSkillManager>();
+		_Unit = GetComponent<Unit>();
 		
 	    DistToGround = GetComponent<Collider>().bounds.extents.y;
 		
@@ -42,9 +44,9 @@ public class ControllerPlayer : MonoBehaviour
 	void Update()
 	{
 		// Implement use weapon skill.
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0))
         {
-			_MetaGameSkillManager.ResolveSkill("PrefabTest", this.gameObject);
+			_MetaGameSkillManager.ResolveSkill("Pulse Blaster", this.gameObject, _Unit);
 		}			
 	}
 
