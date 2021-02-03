@@ -10,7 +10,8 @@ public class MetaGame : MonoBehaviour
     void Start()
     {
 		_MetaObjectPool = GetComponent<MetaObjectPool>();
-		_MetaObjectPool.Instantiate("Player");
+		_MetaObjectPool.Instantiate("MetaGameCamera");
+		_MetaObjectPool.Instantiate("UnitPlayer");
     }
 
     // Update is called once per frame

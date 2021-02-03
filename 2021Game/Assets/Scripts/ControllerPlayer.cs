@@ -6,6 +6,7 @@ public class ControllerPlayer : MonoBehaviour
 {
     public float Speed = 10.0f;
     public float SpeedMax = 30.0f;	
+    public float SpeedRotation = 3.0f;		
 	public float SpeedHover = 15.0f;
 	public float DurationHover = 0.75f;
 	
@@ -54,6 +55,24 @@ public class ControllerPlayer : MonoBehaviour
     // Implement movement in fixedupdate as it is physics based.
     void FixedUpdate()
     {	
+		// Player rotation towards mouse.
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+		
+        float hitdist = 0.0f;
+        if (new Plane(Vector3.up, transform.position).Raycast(ray, out hitdist))
+        {
+            // Get the point along the ray that hits the plane the player is on at the ame y value.
+            Vector3 RotationTemp = ray.GetPoint(hitdist) - transform.position;
+			
+            if (RotationTemp != Vector3.zero)
+            {
+                // Determine the target rotation.  This is the rotation if the player looks at the mouse.
+                Quaternion targetRotation = Quaternion.LookRotation(RotationTemp);
+                // Smoothly rotate the player towards the mouse.
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, SpeedRotation * Time.fixedDeltaTime);
+            }
+        }	
+	
 		// Directional movement
         if (new Vector3(_Rigidbody.velocity.x, 0, _Rigidbody.velocity.z).sqrMagnitude < SpeedMax * SpeedMax)
         {

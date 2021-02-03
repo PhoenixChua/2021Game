@@ -29,7 +29,7 @@ public class SkillBehaviourBase : MonoBehaviour
         else if (!UserUnit || UserUnit != OtherUnit)
         {
 			//Resolve effects;
-			Debug.Log("Bloop");
+			//Debug.Log("Bloop");
 		}			
 	}		
 }
