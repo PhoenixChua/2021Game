@@ -13,7 +13,10 @@ GameObject:
   - component: {fileID: 127073732505389457}
   - component: {fileID: 7888322584830146687}
   - component: {fileID: 7620291289753015865}
-  - component: {fileID: 6515541177263453983}
+  - component: {fileID: 3666982978584185857}
+  - component: {fileID: 1564579193941323449}
+  - component: {fileID: 5599425012597084724}
+  - component: {fileID: 659141468771541199}
   m_Layer: 8
   m_Name: SkillPulseBlaster
   m_TagString: Untagged
@@ -30,7 +33,7 @@ Transform:
   m_GameObject: {fileID: 127073732505389459}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -108,7 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Lifetime: 5
---- !u!114 &6515541177263453983
+--- !u!114 &3666982978584185857
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -117,6 +120,48 @@ MonoBehaviour:
   m_GameObject: {fileID: 127073732505389459}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b61ee97620ce51f45a3067eb7cf0f66d, type: 3}
+  m_Script: {fileID: 11500000, guid: f0e8d73266b63a24abd05550b1f83ee3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UserUnit: {fileID: 0}
+--- !u!114 &1564579193941323449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 127073732505389459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 878494de5c186c34ead0bf306732b107, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpeedForward: 20
+--- !u!114 &5599425012597084724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 127073732505389459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6db958c045366734dbc25709b4bebc63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!54 &659141468771541199
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 127073732505389459}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

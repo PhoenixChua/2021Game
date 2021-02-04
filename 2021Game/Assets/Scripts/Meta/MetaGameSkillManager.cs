@@ -57,7 +57,13 @@ public class MetaGameSkillManager : MonoBehaviour
 				UserUnitComponent.GlobalCooldown = Skills[i].GlobalCooldown;
 				for(int j = 0; j < Skills[i].SkillEffects.Count; ++j)
 				{
-					_MetaObjectPool.Instantiate(Skills[i].SkillEffects[j].SpawnObjectName, User.transform.position);
+					// Create all skill objects (projectiles, particles etc.) associated with skill.
+					GameObject SkillObject = _MetaObjectPool.Instantiate(
+					Skills[i].SkillEffects[j].SpawnObjectName, User.transform.position,
+					User.transform.rotation);
+					
+					SkillObject.GetComponent<Skill>().UserUnit = UserUnitComponent;
+					
 				}
 				break;
 			}

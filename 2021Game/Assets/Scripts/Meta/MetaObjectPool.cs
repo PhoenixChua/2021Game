@@ -59,6 +59,15 @@ public class MetaObjectPool : MonoBehaviour
 		GameObject NewObject = this.Instantiate(Name);
 		NewObject.transform.position = Position;
 		return NewObject;
+	}
+
+	// Instantiate overload for position and rotation.
+	public GameObject Instantiate(string Name, Vector3 Position, Quaternion Rotation)
+	{
+		GameObject NewObject = this.Instantiate(Name);
+		NewObject.transform.position = Position;
+		NewObject.transform.rotation = Rotation;
+		return NewObject;
 	}		
 	
 	// Destroy a pooled object, i.e. deactivates it.

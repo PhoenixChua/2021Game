@@ -128,7 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 10
   SpeedMax: 30
-  SpeedRotation: 1
+  SpeedRotation: 2
   SpeedHover: 15
   DurationHover: 0.75
 --- !u!114 &3730670759470652575
