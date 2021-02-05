@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class SkillBehaviourDamage : SkillBehaviourBase
 {
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	public float Modifier = 1;
 	
     public override bool Resolve(Unit Target, Unit User)
     {
-		//Debug.Log("Damage");
+		Target.Damage(User.Power, Modifier);
 		return true;
 	}
 }

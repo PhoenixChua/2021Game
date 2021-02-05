@@ -21,7 +21,6 @@ public class SkillBehaviourMovement : SkillBehaviourBase
 	
     public override bool Resolve(Unit Target, Unit User)
     {
-		//Debug.Log("Move");
 		return true;
 	}		
 }

@@ -32,7 +32,10 @@ public class MetaGameSkillManager : MonoBehaviour
         public List<SkillEffect> SkillEffects = new List<SkillEffect>();
     }
 	
-    public List<SkillData> Skills = new List<SkillData>();	
+    public List<SkillData> Skills = new List<SkillData>();
+
+	//Index into Skills the current active skill of the player.
+	public int PlayerActiveSkill = -1;
 	
 	MetaObjectPool _MetaObjectPool;
 	
@@ -69,4 +72,27 @@ public class MetaGameSkillManager : MonoBehaviour
 			}
 		}
 	}
+	
+	// Actives the skill currently selected by the player.
+	public void ResolvePlayerActiveSkill(GameObject User, Unit UserUnitComponent)
+	{
+		if(PlayerActiveSkill >= 0 && PlayerActiveSkill < Skills.Count)
+			ResolveSkill(Skills[PlayerActiveSkill].Name, User, UserUnitComponent);
+	}
+	
+	public void PlayerActiveSkillNext()
+	{
+		PlayerActiveSkill++;
+		
+		if(PlayerActiveSkill >= Skills.Count)
+			PlayerActiveSkill = Skills.Count - 1;
+	}
+	
+	public void PlayerActiveSkillPrevious()
+	{
+		PlayerActiveSkill--;
+		
+		if(PlayerActiveSkill < -1)
+			PlayerActiveSkill = -1;		
+	}	
 }

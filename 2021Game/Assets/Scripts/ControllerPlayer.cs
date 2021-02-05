@@ -17,6 +17,8 @@ public class ControllerPlayer : MonoBehaviour
 	MetaGameSkillManager _MetaGameSkillManager;
 	Unit _Unit;
 	
+	float ScrollWheelCooldown = 0.0f;
+	
     Vector3 WorldUp;
     Vector3 WorldDown;
     Vector3 WorldLeft;
@@ -44,11 +46,27 @@ public class ControllerPlayer : MonoBehaviour
 	// Implement skill input in update as it is not physics based.
 	void Update()
 	{
+		ScrollWheelCooldown += Time.deltaTime;
+		
 		// Implement use weapon skill.
         if (Input.GetMouseButton(0))
         {
-			_MetaGameSkillManager.ResolveSkill("Pulse Blaster", this.gameObject, _Unit);
-		}			
+			_MetaGameSkillManager.ResolvePlayerActiveSkill(this.gameObject, _Unit);
+		}
+
+		if(ScrollWheelCooldown > 0.3f)
+		{
+			if(Input.GetAxis("Mouse ScrollWheel") > 0)		
+			{
+				_MetaGameSkillManager.PlayerActiveSkillNext();
+				ScrollWheelCooldown = 0.0f;
+			}
+			else if(Input.GetAxis("Mouse ScrollWheel") < 0)
+			{
+				_MetaGameSkillManager.PlayerActiveSkillPrevious();
+				ScrollWheelCooldown = 0.0f;
+			}
+		}
 	}
 
 	// Physics based updates.

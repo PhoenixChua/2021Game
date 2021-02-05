@@ -70,6 +70,7 @@
     <Compile Include="Assets\Scripts\Meta\MetaSaveLoad.cs" />
     <Compile Include="Assets\Scripts\ObjectTimedLife.cs" />
     <Compile Include="Assets\Scripts\Skill\Skill.cs" />
+    <Compile Include="Assets\Scripts\Skill\SkillBehaviourApplyForce.cs" />
     <Compile Include="Assets\Scripts\Skill\SkillBehaviourBase.cs" />
     <Compile Include="Assets\Scripts\Skill\SkillBehaviourDamage.cs" />
     <Compile Include="Assets\Scripts\Skill\SkillBehaviourMovement.cs" />

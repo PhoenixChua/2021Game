@@ -187,9 +187,14 @@ MonoBehaviour:
       OffsetForward: 0
       OffsetRight: 0
       OffsetUp: 0
-  - Name: 
-    GlobalCooldown: 0
-    SkillEffects: []
+  - Name: Vortex Beam
+    GlobalCooldown: 0.1
+    SkillEffects:
+    - SpawnObjectName: SkillVortexBeam
+      SpawnType: 0
+      OffsetForward: 0
+      OffsetRight: 0
+      OffsetUp: 0
 --- !u!114 &221441337
 MonoBehaviour:
   m_ObjectHideFlags: 0
