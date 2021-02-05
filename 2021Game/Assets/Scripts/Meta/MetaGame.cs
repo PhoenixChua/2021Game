@@ -12,6 +12,8 @@ public class MetaGame : MonoBehaviour
 		_MetaObjectPool = GetComponent<MetaObjectPool>();
 		_MetaObjectPool.Instantiate("MetaGameCamera");
 		_MetaObjectPool.Instantiate("UnitPlayer");
+		_MetaObjectPool.Instantiate("UIGameMousePointer");
+		_MetaObjectPool.Instantiate("UIGameHeightMarker");
 		_MetaObjectPool.Instantiate("UnitCrate",new Vector3(14,0.5f,15));
     }
 

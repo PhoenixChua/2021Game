@@ -74,6 +74,8 @@
     <Compile Include="Assets\Scripts\Skill\SkillBehaviourBase.cs" />
     <Compile Include="Assets\Scripts\Skill\SkillBehaviourDamage.cs" />
     <Compile Include="Assets\Scripts\Skill\SkillBehaviourMovement.cs" />
+    <Compile Include="Assets\Scripts\UI\UIGameHeightMarker.cs" />
+    <Compile Include="Assets\Scripts\UI\UIGameMousePointer.cs" />
     <Compile Include="Assets\Scripts\Unit.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.17f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
