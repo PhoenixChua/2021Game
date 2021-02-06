@@ -18,6 +18,9 @@ public class Unit : MonoBehaviour
 	public float GlobalCooldown = 0.01f;
 	
 	MetaObjectPool _MetaObjectPool = null;
+	Rigidbody _Rigidbody;
+	Collider _Collider;
+	MeshRenderer _MeshRenderer;
 	
     // Start is called before the first frame update
     void Start()
@@ -27,8 +30,13 @@ public class Unit : MonoBehaviour
 			_MetaObjectPool = transform.parent.gameObject.GetComponent<MetaObjectPool>();
 		}  		
 		
+		_Rigidbody = GetComponent<Rigidbody>();
+		_Collider = GetComponent<Collider>();
+		_MeshRenderer = GetComponent<MeshRenderer>();
+		
         GlobalCooldown = 0.01f;
-		OriginalMaterials = gameObject.GetComponent<MeshRenderer>().materials;
+		OriginalMaterials = _MeshRenderer.materials;
+		OriginalColor = _MeshRenderer.material.color;
     }
 
     // Update is called once per frame
@@ -37,6 +45,8 @@ public class Unit : MonoBehaviour
         if(Health <= 0 && !Dead)
 		{
 			Dead = true;
+			_Collider.isTrigger = true;
+			_Rigidbody.useGravity = false;
 			ChangeDeathMaterial();
 			StartCoroutine("Kill");
 		}		
@@ -57,7 +67,9 @@ public class Unit : MonoBehaviour
 	
 	void OnDisable()
 	{
-		gameObject.GetComponent<MeshRenderer>().materials = OriginalMaterials;
+		_MeshRenderer.materials = OriginalMaterials;
+		_Collider.isTrigger = false;
+		_Rigidbody.useGravity = true;
 		Health = HealthMax;	
 		Dead = false;
 		DeathMaterial = null;		
@@ -76,17 +88,23 @@ public class Unit : MonoBehaviour
 		float Total = Power * Modifier;
 		ModifyHealth(-(int)Total);
 		
-		if(Health <= 0 && KillMaterialChange != null)
+		if(Health <= 0)
 		{
-
-			List<Material> DeathMaterialList = new List<Material>();
-			
-			for(int i = 0; i < OriginalMaterials.Length; ++i)
+			if(KillMaterialChange != null)
 			{
-				DeathMaterialList.Add(KillMaterialChange);
+				List<Material> DeathMaterialList = new List<Material>();
+			
+				for(int i = 0; i < OriginalMaterials.Length; ++i)
+				{
+					DeathMaterialList.Add(KillMaterialChange);
 
+				}
+				DeathMaterial = DeathMaterialList.ToArray();
 			}
-			DeathMaterial = DeathMaterialList.ToArray();
+		}
+		else
+		{
+			DamageFlashRed(0.1f);
 		}
 	}
 	
@@ -102,7 +120,8 @@ public class Unit : MonoBehaviour
 	}
 	
 	
-	// Death Material Change		
+	// Material and Color Changes When Hit/Killed.
+	Color OriginalColor;	
 	Material[] OriginalMaterials;
 	Material[] DeathMaterial = null;
 
@@ -110,8 +129,18 @@ public class Unit : MonoBehaviour
 	{
 		if(DeathMaterial != null)
 		{
-			MeshRenderer _MeshRenderer = gameObject.GetComponent<MeshRenderer>();
 			_MeshRenderer.materials = DeathMaterial;
 		}
 	}
+	
+	void DamageFlashRed(float Time)
+	{
+		_MeshRenderer.material.color = Color.red;
+		Invoke("ResetColor", Time);
+	}
+	
+	void ResetColor()
+	{
+      _MeshRenderer.material.color = OriginalColor;
+	}	
 }

@@ -29,7 +29,16 @@ public class MetaGame : MonoBehaviour
 		_MetaObjectPool.Instantiate("UnitCrate",new Vector3(-8,0.5f,-10));	
 		_MetaObjectPool.Instantiate("UnitCrate",new Vector3(-8,0.5f,-8));
 		_MetaObjectPool.Instantiate("UnitCrate",new Vector3(-8,0.5f,-11));
-		_MetaObjectPool.Instantiate("UnitCrate",new Vector3(-9,0.5f,-11));			
+		_MetaObjectPool.Instantiate("UnitCrate",new Vector3(-9,0.5f,-11));
+		_MetaObjectPool.Instantiate("UnitCrate",new Vector3(-9,0.5f,-12));	
+		_MetaObjectPool.Instantiate("UnitCrate",new Vector3(-9,0.5f,-13));
+		_MetaObjectPool.Instantiate("UnitCrate",new Vector3(-10,0.5f,-11));
+		_MetaObjectPool.Instantiate("UnitCrate",new Vector3(-10,1.5f,-11));
+		_MetaObjectPool.Instantiate("UnitCrate",new Vector3(8,0.5f,-11));
+		_MetaObjectPool.Instantiate("UnitCrate",new Vector3(8,0.5f,-12));	
+		_MetaObjectPool.Instantiate("UnitCrate",new Vector3(7,0.5f,-13));
+		_MetaObjectPool.Instantiate("UnitCrate",new Vector3(6,0.5f,-11));
+		_MetaObjectPool.Instantiate("UnitCrate",new Vector3(6,1.5f,-11));			
     }
 
     // Update is called once per frame

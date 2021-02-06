@@ -63,7 +63,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9adf510f62eecf34cbd5a4e013dcd9db, type: 2}
   - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -147,5 +147,5 @@ MonoBehaviour:
   HealthMax: 100
   Power: 10
   Team: Player
-  DeathAnimationTime: 1
+  DeathAnimationTime: 0.5
   GlobalCooldown: 0.01
