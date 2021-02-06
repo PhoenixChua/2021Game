@@ -17,8 +17,19 @@ public class MetaGame : MonoBehaviour
 		_MetaObjectPool.Instantiate("UIGameHeightMarker");
 		_MetaObjectPool.Instantiate("UnitCrate",new Vector3(14,0.5f,15));
 		_MetaObjectPool.Instantiate("UnitCrate",new Vector3(14,1.5f,15));
-		_MetaObjectPool.Instantiate("UnitCrate",new Vector3(15,0.5f,16));
-		_MetaObjectPool.Instantiate("UnitCrate",new Vector3(15,1.5f,16));		
+		_MetaObjectPool.Instantiate("UnitCrate",new Vector3(15,0.5f,13));
+		_MetaObjectPool.Instantiate("UnitCrate",new Vector3(15,1.5f,13));
+		_MetaObjectPool.Instantiate("UnitCrate",new Vector3(14,0.5f,16));
+		_MetaObjectPool.Instantiate("UnitCrate",new Vector3(-2,0.5f,-5));
+		_MetaObjectPool.Instantiate("UnitCrate",new Vector3(-3,0.5f,-7));
+		_MetaObjectPool.Instantiate("UnitCrate",new Vector3(-4,0.5f,-10));	
+		_MetaObjectPool.Instantiate("UnitCrate",new Vector3(-4,0.5f,-8));
+		_MetaObjectPool.Instantiate("UnitCrate",new Vector3(-6,0.5f,-11));
+		_MetaObjectPool.Instantiate("UnitCrate",new Vector3(-6,1.5f,-11));
+		_MetaObjectPool.Instantiate("UnitCrate",new Vector3(-8,0.5f,-10));	
+		_MetaObjectPool.Instantiate("UnitCrate",new Vector3(-8,0.5f,-8));
+		_MetaObjectPool.Instantiate("UnitCrate",new Vector3(-8,0.5f,-11));
+		_MetaObjectPool.Instantiate("UnitCrate",new Vector3(-9,0.5f,-11));			
     }
 
     // Update is called once per frame

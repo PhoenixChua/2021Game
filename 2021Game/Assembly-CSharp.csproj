@@ -72,6 +72,7 @@
     <Compile Include="Assets\Scripts\Skill\Skill.cs" />
     <Compile Include="Assets\Scripts\Skill\SkillBehaviourApplyForce.cs" />
     <Compile Include="Assets\Scripts\Skill\SkillBehaviourBase.cs" />
+    <Compile Include="Assets\Scripts\Skill\SkillBehaviourCreateObject.cs" />
     <Compile Include="Assets\Scripts\Skill\SkillBehaviourDamage.cs" />
     <Compile Include="Assets\Scripts\Skill\SkillBehaviourMovement.cs" />
     <Compile Include="Assets\Scripts\UI\UIGameHeightMarker.cs" />

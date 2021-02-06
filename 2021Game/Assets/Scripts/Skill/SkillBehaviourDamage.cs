@@ -6,9 +6,11 @@ public class SkillBehaviourDamage : SkillBehaviourBase
 {
 	public float Modifier = 1;
 	
+	public Material KillMaterialChange;
+	
     public override bool Resolve(Unit Target, Unit User)
     {
-		Target.Damage(User.Power, Modifier);
+		Target.Damage(User.Power, Modifier, KillMaterialChange);
 		return true;
 	}
 }

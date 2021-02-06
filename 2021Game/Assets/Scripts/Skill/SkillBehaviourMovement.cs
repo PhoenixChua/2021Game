@@ -9,7 +9,7 @@ public class SkillBehaviourMovement : SkillBehaviourBase
 	
     public override void Start()
     {
-		GetComponent<Skill>().RegisterSkillEffect(this);
+		base.Start();
         _Rigidbody = GetComponent<Rigidbody>();        
     }	
 	

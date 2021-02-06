@@ -28,6 +28,7 @@ public class Unit : MonoBehaviour
 		}  		
 		
         GlobalCooldown = 0.01f;
+		OriginalMaterials = gameObject.GetComponent<MeshRenderer>().materials;
     }
 
     // Update is called once per frame
@@ -36,6 +37,7 @@ public class Unit : MonoBehaviour
         if(Health <= 0 && !Dead)
 		{
 			Dead = true;
+			ChangeDeathMaterial();
 			StartCoroutine("Kill");
 		}		
 		
@@ -51,12 +53,14 @@ public class Unit : MonoBehaviour
 				_MetaObjectPool.Deactivate(this.gameObject);
 			else
 				Destroy(this.gameObject);
-	}
+	}	
 	
-	void OnEnable()
+	void OnDisable()
 	{
+		gameObject.GetComponent<MeshRenderer>().materials = OriginalMaterials;
 		Health = HealthMax;	
-		Dead = false; 		
+		Dead = false;
+		DeathMaterial = null;		
 	}
 	
 	void ModifyHealth(int Amount)
@@ -67,10 +71,23 @@ public class Unit : MonoBehaviour
 			Health = HealthMax;
 	}
 	
-	public void Damage(int Power, float Modifier)
+	public void Damage(int Power, float Modifier, Material KillMaterialChange)
 	{
 		float Total = Power * Modifier;
 		ModifyHealth(-(int)Total);
+		
+		if(Health <= 0 && KillMaterialChange != null)
+		{
+
+			List<Material> DeathMaterialList = new List<Material>();
+			
+			for(int i = 0; i < OriginalMaterials.Length; ++i)
+			{
+				DeathMaterialList.Add(KillMaterialChange);
+
+			}
+			DeathMaterial = DeathMaterialList.ToArray();
+		}
 	}
 	
 	public void Heal(int Power, float Modifier)
@@ -82,5 +99,19 @@ public class Unit : MonoBehaviour
 	public bool IsDead()
 	{
 		return Dead;
+	}
+	
+	
+	// Death Material Change		
+	Material[] OriginalMaterials;
+	Material[] DeathMaterial = null;
+
+	void ChangeDeathMaterial()
+	{
+		if(DeathMaterial != null)
+		{
+			MeshRenderer _MeshRenderer = gameObject.GetComponent<MeshRenderer>();
+			_MeshRenderer.materials = DeathMaterial;
+		}
 	}
 }

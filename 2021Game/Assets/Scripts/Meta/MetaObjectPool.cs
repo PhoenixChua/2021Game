@@ -49,7 +49,7 @@ public class MetaObjectPool : MonoBehaviour
 	{
 		GameObject NewObject = (GameObject)Instantiate(Resources.Load(Name));
 		ObjectPool[Name].Add(NewObject);
-		NewObject.transform.SetParent(this.gameObject.transform);
+		NewObject.transform.SetParent(this.gameObject.transform);		
 		return NewObject;
 	}
 	
@@ -64,8 +64,7 @@ public class MetaObjectPool : MonoBehaviour
 	// Instantiate overload for position and rotation.
 	public GameObject Instantiate(string Name, Vector3 Position, Quaternion Rotation)
 	{
-		GameObject NewObject = this.Instantiate(Name);
-		NewObject.transform.position = Position;
+		GameObject NewObject = this.Instantiate(Name, Position);
 		NewObject.transform.rotation = Rotation;
 		return NewObject;
 	}		

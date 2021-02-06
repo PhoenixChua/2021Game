@@ -127,5 +127,5 @@ MonoBehaviour:
   HealthMax: 20
   Power: 10
   Team: 
-  DeathAnimationTime: 1
+  DeathAnimationTime: 0.75
   GlobalCooldown: 0.01

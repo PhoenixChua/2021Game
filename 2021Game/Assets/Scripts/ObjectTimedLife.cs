@@ -31,7 +31,7 @@ public class ObjectTimedLife : MonoBehaviour
 		}				
     }
 	
-    private void OnEnable()
+    private void OnDisable()
     {		
         TimerLifetime = 0.0f;
     }	

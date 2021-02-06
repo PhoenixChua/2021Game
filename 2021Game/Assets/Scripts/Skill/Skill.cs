@@ -10,7 +10,7 @@ public class Skill : MonoBehaviour
 	public int MaxActivations = 1;
 		
     public Unit UserUnit = null;
-	MetaObjectPool _MetaObjectPool = null;	
+	public MetaObjectPool _MetaObjectPool = null;	
 	
     // Start is called before the first frame update
     void Start()
