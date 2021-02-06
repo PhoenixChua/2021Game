@@ -184,7 +184,7 @@ MonoBehaviour:
     SkillEffects:
     - SpawnObjectName: SkillPulseBlaster
       SpawnType: 0
-      OffsetForward: 0
+      OffsetForward: 1.5
       OffsetRight: 0
       OffsetUp: 0
   - Name: Vortex Beam
@@ -195,6 +195,7 @@ MonoBehaviour:
       OffsetForward: 0
       OffsetRight: 0
       OffsetUp: 0
+  PlayerActiveSkill: -1
 --- !u!114 &221441337
 MonoBehaviour:
   m_ObjectHideFlags: 0

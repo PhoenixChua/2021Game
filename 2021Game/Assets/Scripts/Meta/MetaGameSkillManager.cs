@@ -57,12 +57,17 @@ public class MetaGameSkillManager : MonoBehaviour
 		{
 			if(Skills[i].Name == SkillName && UserUnitComponent.GlobalCooldown < 0.0f)
 			{
-				UserUnitComponent.GlobalCooldown = Skills[i].GlobalCooldown;
+				UserUnitComponent.GlobalCooldown = Skills[i].GlobalCooldown;				
+				
 				for(int j = 0; j < Skills[i].SkillEffects.Count; ++j)
 				{
+					Vector3 Offset = new Vector3(0,0,0);
+				
+					Offset += Skills[i].SkillEffects[j].OffsetForward * User.transform.forward;
+					
 					// Create all skill objects (projectiles, particles etc.) associated with skill.
 					GameObject SkillObject = _MetaObjectPool.Instantiate(
-					Skills[i].SkillEffects[j].SpawnObjectName, User.transform.position,
+					Skills[i].SkillEffects[j].SpawnObjectName, User.transform.position + Offset,
 					User.transform.rotation);
 					
 					SkillObject.GetComponent<Skill>().UserUnit = UserUnitComponent;
