@@ -19,8 +19,10 @@ public class Unit : MonoBehaviour
 	
 	MetaObjectPool _MetaObjectPool = null;
 	Rigidbody _Rigidbody;
-	Collider _Collider;
-	MeshRenderer _MeshRenderer;
+	Collider _Collider;	
+
+	// Component that changes meshrenderer settings when a unit responds to events.
+	UnitMeshRendererEffects _UnitMeshRendererEffects;
 	
     // Start is called before the first frame update
     void Start()
@@ -31,12 +33,10 @@ public class Unit : MonoBehaviour
 		}  		
 		
 		_Rigidbody = GetComponent<Rigidbody>();
-		_Collider = GetComponent<Collider>();
-		_MeshRenderer = GetComponent<MeshRenderer>();
+		_Collider = GetComponent<Collider>();		
+		_UnitMeshRendererEffects = gameObject.AddComponent(typeof(UnitMeshRendererEffects)) as UnitMeshRendererEffects;
 		
         GlobalCooldown = 0.01f;
-		OriginalMaterials = _MeshRenderer.materials;
-		OriginalColor = _MeshRenderer.material.color;
     }
 
     // Update is called once per frame
@@ -47,7 +47,6 @@ public class Unit : MonoBehaviour
 			Dead = true;
 			_Collider.isTrigger = true;
 			_Rigidbody.useGravity = false;
-			ChangeDeathMaterial();
 			StartCoroutine("Kill");
 		}		
 		
@@ -67,12 +66,11 @@ public class Unit : MonoBehaviour
 	
 	void OnDisable()
 	{
-		_MeshRenderer.materials = OriginalMaterials;
+		Health = HealthMax;
 		_Collider.isTrigger = false;
-		_Rigidbody.useGravity = true;
-		Health = HealthMax;	
+		_Rigidbody.useGravity = true;		
 		Dead = false;
-		DeathMaterial = null;		
+			
 	}
 	
 	void ModifyHealth(int Amount)
@@ -92,19 +90,12 @@ public class Unit : MonoBehaviour
 		{
 			if(KillMaterialChange != null)
 			{
-				List<Material> DeathMaterialList = new List<Material>();
-			
-				for(int i = 0; i < OriginalMaterials.Length; ++i)
-				{
-					DeathMaterialList.Add(KillMaterialChange);
-
-				}
-				DeathMaterial = DeathMaterialList.ToArray();
+				_UnitMeshRendererEffects.ChangeDeathMaterial(KillMaterialChange);
 			}
 		}
 		else
 		{
-			DamageFlashRed(0.1f);
+			_UnitMeshRendererEffects.DamageFlashRed(0.1f);
 		}
 	}
 	
@@ -117,30 +108,5 @@ public class Unit : MonoBehaviour
 	public bool IsDead()
 	{
 		return Dead;
-	}
-	
-	
-	// Material and Color Changes When Hit/Killed.
-	Color OriginalColor;	
-	Material[] OriginalMaterials;
-	Material[] DeathMaterial = null;
-
-	void ChangeDeathMaterial()
-	{
-		if(DeathMaterial != null)
-		{
-			_MeshRenderer.materials = DeathMaterial;
-		}
-	}
-	
-	void DamageFlashRed(float Time)
-	{
-		_MeshRenderer.material.color = Color.red;
-		Invoke("ResetColor", Time);
-	}
-	
-	void ResetColor()
-	{
-      _MeshRenderer.material.color = OriginalColor;
-	}	
+	}		
 }
